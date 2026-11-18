@@ -1,0 +1,13 @@
+{
+  "name": "comma",
+  "version": "0.4.1",
+  "description": "research (documents into videos, each on a reel shape that fits), vlog (this session as a video), make (one topic into a script), edit (an editing prompt in the style of a reel that worked), idea and find. Everything lands in your Comma app.",
+  "author": {
+    "name": "Mir Fahad"
+  },
+  "homepage": "https://comma.mirfahad.com",
+  "documentationUrl": "https://comma.mirfahad.com/connect/",
+  "privacyPolicyUrl": "https://comma.mirfahad.com/privacy/",
+  "icon": "./assets/comma-512.png",
+  "license": "UNLICENSED"
+}

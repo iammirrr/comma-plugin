@@ -1,0 +1,16 @@
+{
+  "name": "comma",
+  "owner": {
+    "name": "Mir Fahad"
+  },
+  "plugins": [
+    {
+      "name": "comma",
+      "source": "./",
+      "description": "Turn your research into a reel script in Comma's format, and save it to your Comma Drafts."
+    }
+  ],
+  "metadata": {
+    "description": "Connect Claude to Comma and save short video scripts and ideas."
+  }
+}

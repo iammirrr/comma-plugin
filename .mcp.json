@@ -1,0 +1,5 @@
+{
+  "mcpServers": {
+    "comma": { "type": "http", "url": "https://comma.mirfahad.com/mcp" }
+  }
+}

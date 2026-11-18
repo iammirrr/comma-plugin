@@ -1,0 +1,95 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "comma",
+  "version": "0.4.1",
+  "description": "Write short-form video scripts using reel structures from Comma’s library, then save drafts, versions, and ideas to your Comma workspace.",
+  "author": {
+    "name": "Mir Fahad",
+    "email": "comma@mirfahad.com",
+    "url": "https://comma.mirfahad.com/"
+  },
+  "homepage": "https://comma.mirfahad.com/",
+  "keywords": ["video", "scriptwriting", "ideas"],
+  "extensions": {
+    "com.openai": {
+      "interface": {
+        "displayName": "Comma",
+        "shortDescription": "Write short video scripts",
+        "longDescription": "Comma is an iPhone app for writing short-form video scripts. Find a reel structure in Comma’s library, use it to shape a script in your own words, and save the draft to film with Comma’s teleprompter. You can also browse your ideas and scripts, save a new version beside the current draft, capture an idea, or get editing guidance for a reel with an editing guide. Requires a Comma Pro account. Sign in with the same account you use in Comma.",
+        "developerName": "Mir Fahad",
+        "category": "Creativity",
+        "capabilities": [
+          "Search and open reel breakdowns",
+          "Find your Comma ideas and scripts",
+          "Save drafts, script versions, and ideas",
+          "Get editing guidance for a reel"
+        ],
+        "websiteURL": "https://comma.mirfahad.com/",
+        "supportURL": "https://comma.mirfahad.com/support/",
+        "privacyPolicyURL": "https://comma.mirfahad.com/privacy/",
+        "termsOfServiceURL": "https://comma.mirfahad.com/terms/",
+        "defaultPrompt": [
+          "Help me write a short video script about the two-minute rule with Comma.",
+          "Show my latest drafts in Comma.",
+          "Save this idea to Comma: a week without my phone."
+        ],
+        "logo": "./assets/comma-512.png",
+        "composerIcon": "./assets/comma-512.png"
+      },
+      "review": {
+        "test_cases": {
+          "positive": [
+            {
+              "description": "Find a reel structure",
+              "prompt": "Find a day-in-the-life reel in Comma’s library. Open one match and summarize what each beat does. If it has an editing guide, show me the editing steps too.",
+              "tools_triggered": "search_breakdowns, get_breakdown, get_edit_prompt when a guide is available",
+              "expected_behavior": "Show the retrieved beats and their roles. Give editing steps if the matched reel has a guide. Leave the workspace untouched."
+            },
+            {
+              "description": "Write and confirm a new draft",
+              "prompt": "Use Comma to write a short video explaining the two-minute rule. Show me the draft first. After I see it, I’ll reply: Save that to my Comma Drafts.",
+              "tools_triggered": "comma_guide, search_breakdowns, get_breakdown, save_script after confirmation",
+              "expected_behavior": "Show the script first. Once the reviewer asks to save it, create one new draft in Comma and confirm the save."
+            },
+            {
+              "description": "Read a draft and add a new version",
+              "prompt": "Find and open my Comma draft called The One-Drawer Reset. Show me a 20-second version. After I see it, I’ll reply: Save that as a new version named 20 Seconds.",
+              "tools_triggered": "list_my_scripts, get_script, comma_guide, save_script after confirmation",
+              "expected_behavior": "Read the named draft, show the revision, then append a version to the same script after the reviewer asks to save it. The original beats stay intact."
+            },
+            {
+              "description": "Find a saved idea",
+              "prompt": "Find my saved Comma idea about putting the phone in another room. Show me what I wrote.",
+              "tools_triggered": "list_my_ideas",
+              "expected_behavior": "Return the matching idea from the connected workspace without inventing details or writing anything."
+            },
+            {
+              "description": "Save an idea and check delivery",
+              "prompt": "Save this idea to Comma: a week without my phone. Then check that it arrived.",
+              "tools_triggered": "save_idea, get_capture_receipt",
+              "expected_behavior": "Save one idea and verify receipt of the same capture. Report success only when Comma confirms it."
+            }
+          ],
+          "negative": [
+            {
+              "description": "Drafting without a save request",
+              "prompt": "Draft a short video using Comma’s format. Keep it in this chat, please."
+            },
+            {
+              "description": "Unavailable script ID",
+              "prompt": "Open Comma script 00000000-0000-4000-8000-000000000000 and tell me what it says."
+            },
+            {
+              "description": "Unsupported deletion",
+              "prompt": "Delete all my Comma drafts and ideas."
+            }
+          ]
+        },
+        "commerce": false
+      },
+      "publication": {
+        "release_notes": "Connect your Comma workspace, browse reel structures, and save video scripts, versions, and ideas."
+      }
+    }
+  }
+}
